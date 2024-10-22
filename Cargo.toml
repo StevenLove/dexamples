@@ -7,7 +7,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-
+serde_json = { version = "1.0.128" }
 dioxus = { version = "0.5", features = ["desktop", "router"] }
 
 # Debug
