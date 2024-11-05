@@ -1,17 +1,14 @@
 # Purpose
-This is an example project to explore Dioxus's message passing between Rust and javascript using `eval`, `dioxus.send` and `dioxus.recv`
+This is an example project to explore Dioxus's window management
 
 # Procedure
 `cargo run`
-tap the `Send timestamps in a loop` button
-watch as local_timestamps and remote_timestamps fill with timestamps as a message is passed from Rust->js->Rust
-eventually, within 1 minute, it breaks. A call to `eval.recv().await` returns an `Err(Finished)` which you can see in the CLI logs.
+The app should open two windows, one that says "Hello" and one that says "World"
+Tap the operating system's [x] button to close a window, and then tap the other [x] to close the other window.
 
-# Questions
-- Is there a better practice with Dioxus that will allow me to make RPC-style calls to javascript, passing in some args and getting back a return value
-- Is there a problem with using `eval` repeatedly (100s of times) in a loop?
-- Is this a timing issue that could be resolved by adding sleeps or timeouts?
+In dioxus 0.5, this works just fine and you can close either window first.
 
-# Version
-Dioxus 0.5.6
-not using `dx` Dioxus CLI
+In dioxus 0.6.0, the windows don't react to the [x] button until you have attempted to close each both of the windows. 
+
+# Attempted workaround
+I wanted to try using `use_wry_event_handler` to manually handle the `WindowEvent::CloseRequested` event, but I am struggling to hear any events on windows other than the first one (the one labeled "Hello" in this case). Right now the demo app tracks `WindowEvent::Moved` and prints to the console. You can see that moving the "Hello" window prints events and no events are printed when you move the other window.
