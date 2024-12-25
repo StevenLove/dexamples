@@ -9,7 +9,9 @@ edition = "2021"
 [dependencies]
 rand = "0.8"
 serde_json = { version = "1.0.128" }
-dioxus = { version = "0.5", features = ["desktop", "router"] }
+dioxus = { version = "0.6", features = ["desktop", "router"] }
 
 # Debug
 dioxus-logger = "0.5.1"
+dioxus-toast = { git = "https://github.com/mrxiaozhuox/dioxus-toast" }
+tokio = "1.42.0"
